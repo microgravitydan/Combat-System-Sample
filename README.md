@@ -30,6 +30,8 @@ Full requirements are listed in Assigment.md
         * [ ] List Name, Health, Combat Status, and Target of each Character.
 
 ## Technologies Used
-* Unity 2020.3.0f1
-* VSCodium
-* GitLab
+* Development Environment
+    * Unity 2020.3.0f1
+    * VSCodium
+    * GitLab
+* Dependencies
