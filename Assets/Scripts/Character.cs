@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Character : MonoBehaviour {
     //// Character Stats
@@ -9,8 +10,6 @@ public class Character : MonoBehaviour {
     [SerializeField]
     [Tooltip("Name of Character")]
     private string characterName; // Character Name
-
-    // TODO: Nametag
 
     // Health
     [SerializeField]
@@ -27,8 +26,12 @@ public class Character : MonoBehaviour {
     private Transform characterHand;
 
     [SerializeField]
-    [Tooltip("GameObject face for showing things")]
-    private GameObject characterFace;
+    [Tooltip("Text Mesh for top half of face emotes")]
+    private TextMeshPro characterEyes;
+
+    [SerializeField]
+    [Tooltip("Text Mesh for bottom half of face nametag")]
+    private TextMeshPro characterNameTag;
 
     // Weapon
     [SerializeField]
@@ -56,8 +59,6 @@ public class Character : MonoBehaviour {
     // Combat Target
     private GameObject combatTarget; // Chosen target enemy for combat
 
-    // TODO: Angry face
-
     // Navigation
 	UnityEngine.AI.NavMeshAgent navigationAgent; // Navigation Agent
     private Transform characterPosition; // Character Position
@@ -77,14 +78,21 @@ public class Character : MonoBehaviour {
         // Initialize Weapon
         prepareWeapon(weaponStarting);
 
-        // TODO: Check for unique name
+        // Initialize face
+        characterNameTag = this.transform.Find("Face/Tag").GetComponent<TextMeshPro>();
+        characterEyes = this.transform.Find("Face/Eyes").GetComponent<TextMeshPro>();
+        characterNameTag.text = characterName;
     }
 
     void Update() {
         // Check for death if health is 0 or lower.
-        if (healthPoints <= 0 || dead) {
+        if (dead) {
+            // Stay dead
+        } else if (healthPoints <= 0) {
             dead = true;
-            // TODO: Look dead
+            Debug.Log(characterName + " has died");
+            GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            characterEyes.text = "x x";
         } else {
             if (combatActive) {
                 InCombat();
@@ -100,11 +108,8 @@ public class Character : MonoBehaviour {
         if (targetsInRange.Count > 0) {
             ChooseTarget();
             combatActive = true;
+            characterEyes.text = "° °";
         }
-        // Target must be in range and not dead
-        // Randomly choose random target in range
-
-        // Move
     }
 
     void prepareWeapon(Weapon weapon) {
@@ -147,6 +152,7 @@ public class Character : MonoBehaviour {
             combatTarget = null;
             combatActive = false;
             weaponSpeedCurrent = 0;
+            characterEyes.text = "o o";
         }
         // Move evasively
     }
@@ -195,7 +201,6 @@ public class Character : MonoBehaviour {
     }
 
     public void ReceiveDamage(int damage) {
-        Debug.Log("Hit by bullet!");
         healthPoints -= damage;
     }
 }

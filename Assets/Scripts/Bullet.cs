@@ -33,10 +33,9 @@ public class Bullet : MonoBehaviour {
 
     void OnTriggerEnter(Collider collidedObject) {
         if (collidedObject.gameObject.CompareTag("Character")) {
-            Debug.Log("Hit Character!");
             collidedObject.GetComponent<Character>().ReceiveDamage(projectileDamage);
         }
-        
+
         Destroy(this.gameObject);
     }
 }
