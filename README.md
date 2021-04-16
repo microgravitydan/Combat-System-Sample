@@ -16,10 +16,12 @@ Full requirements are listed in Assigment.md
         * [ ] **Choose one valid target randomly**
         * [ ] Attack with weapon
     * [ ] **Dead**
+    * [ ] Face and Nametags
 * [ ] **Weapons**
     * [ ] **Attack Speed** (Warmup)
     * [ ] **Range**
     * [ ] **Spawn Bullet**
+    * [ ] Blast effects
 * [ ] **Bullets**
     * [ ] **Damage**
     * [ ] **Speed**
