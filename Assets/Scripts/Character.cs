@@ -71,7 +71,7 @@ public class Character : MonoBehaviour {
 
     void Update() {
         // Check for death if health is 0 or lower.
-        if (healthPoints <= 0) {
+        if (healthPoints <= 0 || dead) {
             dead = true;
             // TODO: Look dead
         } else {
@@ -86,7 +86,7 @@ public class Character : MonoBehaviour {
     void OutOfCombat() {
         // Check for all enemies within range
         UpdateTargetsInRange();
-        if (targetsInRange != null) {
+        if (targetsInRange.Count > 0) {
             ChooseTarget();
         }
         // Target must be in range and not dead
@@ -111,19 +111,24 @@ public class Character : MonoBehaviour {
         foreach (GameObject target in targetsAll) { // Check every character target
             Vector3 diff = target.transform.position - position;
             float targetDistance = diff.sqrMagnitude; // Squared for efficiency
+            
+            // Check if within range
             if (targetDistance < weaponRange * weaponRange) { // Squared for efficiency
-                targetsInRange.Add(target);
+                
+                // Check if dead
+                if (target.GetComponent<Character>().dead == false) {
+                    
+                    // Add to list
+                    targetsInRange.Add(target);
+                }
             }
-            // TODO: Check if dead
         }
         // Remove self from List
         targetsInRange.Remove(this.gameObject);
     }
 
     void ChooseTarget() {
-        if (targetsInRange != null) {
-            combatTarget = targetsInRange[Random.Range(0,targetsInRange.Count)];
-        }
+        combatTarget = targetsInRange[Random.Range(0,targetsInRange.Count)];
     }
 
     bool IsTargetInRange (Transform target) {
