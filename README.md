@@ -21,15 +21,15 @@ Full requirements are listed in Assigment.md
             * [X] Exit combat
         * [ ] **Attack with weapon**
             * [X] Aim
-            * [ ] Fire
+            * [X] Fire
         * [ ] Evasive movement
     * [X] **Death**
         * [ ] Look dead
     * [ ] Face and Nametags
 * [ ] **Weapons**
     * [X] Instantiate
-    * [ ] **Attack Speed** (Warmup)
-    * [ ] **Range**
+    * [X] **Attack Speed** (Warmup)
+    * [X] **Range**
     * [ ] **Spawn Bullet**
     * [ ] Blast effects
 * [ ] **Bullets**

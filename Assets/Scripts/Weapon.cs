@@ -6,8 +6,8 @@ public class Weapon : MonoBehaviour {
     //// Weapon Specifications
     // Attack warm up speed
     [SerializeField]
-    [Tooltip("Attack warm up time in milliseconds before each attack")]
-    public int weaponSpeed = 500; // milliseconds attack warmup speed
+    [Tooltip("Attack warm up time in seconds before each attack")]
+    public float weaponSpeed = 0.5f; // Seconds attack warmup speed
 
     // Attack range
     [SerializeField]
@@ -27,5 +27,8 @@ public class Weapon : MonoBehaviour {
         
     }
 
+    public void FireWeapon() {
+        Debug.Log("Weapon Bang!");
+    }
 
 }

@@ -38,7 +38,8 @@ public class Character : MonoBehaviour {
     private Weapon weaponHeld;
 
     private int weaponRange; // Meters range from Weapon
-    private int weaponSpeed; // Milliseconds warm up from Weapon
+    private float weaponSpeed; // Seconds warm up from Weapon
+    private float weaponSpeedCurrent; // Seconds count up before each firing
 
     //// Behavior
     // Combat Status
@@ -135,9 +136,17 @@ public class Character : MonoBehaviour {
             // Aim
             this.transform.LookAt(combatTarget.transform);
             // Fire
+            weaponSpeedCurrent += Time.deltaTime;
+            if (weaponSpeedCurrent >= weaponSpeed) {
+                // Call FireWeapon from Held Weapon
+                weaponHeld.GetComponent<Weapon>().FireWeapon();
+                weaponSpeedCurrent = 0; // Reset timer
+            }
         } else {
+            // Exit Combat
             combatTarget = null;
             combatActive = false;
+            weaponSpeedCurrent = 0;
         }
         // Move evasively
     }
