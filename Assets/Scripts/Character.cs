@@ -86,6 +86,9 @@ public class Character : MonoBehaviour {
     void OutOfCombat() {
         // Check for all enemies within range
         UpdateTargetsInRange();
+        if (targetsInRange != null) {
+            ChooseTarget();
+        }
         // Target must be in range and not dead
         // Randomly choose random target in range
 
@@ -102,23 +105,25 @@ public class Character : MonoBehaviour {
     }
 
     void UpdateTargetsInRange() {
-        targetsInRange.Clear();
+        targetsInRange.Clear(); // Start with a blank state
 
-        Vector3 position = transform.position;
-        foreach (GameObject target in targetsAll) {
+        Vector3 position = transform.position; // Set position for distance caclulation
+        foreach (GameObject target in targetsAll) { // Check every character target
             Vector3 diff = target.transform.position - position;
-            float targetDistance = diff.sqrMagnitude;
-            float range = weaponRange * weaponRange; // Squared for efficiency
-            if (targetDistance < range) {
+            float targetDistance = diff.sqrMagnitude; // Squared for efficiency
+            if (targetDistance < weaponRange * weaponRange) { // Squared for efficiency
                 targetsInRange.Add(target);
             }
+            // TODO: Check if dead
         }
         // Remove self from List
         targetsInRange.Remove(this.gameObject);
     }
 
-    Transform ChooseTarget() {
-        return null;
+    void ChooseTarget() {
+        if (targetsInRange != null) {
+            combatTarget = targetsInRange[Random.Range(0,targetsInRange.Count)];
+        }
     }
 
     bool IsTargetInRange (Transform target) {

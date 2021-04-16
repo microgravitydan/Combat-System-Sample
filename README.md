@@ -6,16 +6,20 @@ Full requirements are listed in Assigment.md
 
 ## Task List
 * [ ] **10 Characters**
-    * [ ] **Health**
+    * [X] **Health**
     * [ ] Name
     * [ ] Out of Combat
-        * [ ] Random movement
         * [ ] Scan for targets
+            * [X] Add targets within range
+            * [ ] Remove dead targets
+            * [X] Remove self
+        * [X] **Choose one valid target randomly**
+        * [ ] Random movement
     * [ ] In Combat
-        * [ ] Evasive movement
-        * [ ] **Choose one valid target randomly**
+        * [ ] Check if target still valid
         * [ ] Attack with weapon
-    * [ ] **Dead**
+        * [ ] Evasive movement
+    * [X] **Dead**
     * [ ] Face and Nametags
 * [ ] **Weapons**
     * [ ] **Attack Speed** (Warmup)
@@ -35,5 +39,5 @@ Full requirements are listed in Assigment.md
 * Development Environment
     * Unity 2020.3.0f1
     * VSCodium
-    * GitLab
 * Dependencies
+    * TextMeshPro 3.0.5
