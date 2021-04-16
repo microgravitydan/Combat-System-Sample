@@ -21,10 +21,24 @@ public class Character : MonoBehaviour {
     [Tooltip("The character is dead")]
     public bool dead = false;
 
+    // Body Parts
+    [SerializeField]
+    [Tooltip("Transform hand for holding things")]
+    private Transform characterHand;
+
+    [SerializeField]
+    [Tooltip("GameObject face for showing things")]
+    private GameObject characterFace;
+
     // Weapon
     [SerializeField]
-    [Tooltip("Weapon prefab held by character")]
+    [Tooltip("Weapon prefab character starts with")]
+    private Weapon weaponStarting;
+
     private Weapon weaponHeld;
+
+    private int weaponRange; // Meters range from Weapon
+    private int weaponSpeed; // Milliseconds warm up from Weapon
 
     //// Behavior
     // Combat Status
@@ -40,10 +54,6 @@ public class Character : MonoBehaviour {
 
     // Combat Target
     private GameObject combatTarget; // Chosen target enemy for combat
-
-    // Weapon
-    private int weaponRange = 7; // Meters range from Weapon
-    private int weaponSpeed; // Milliseconds warm up from Weapon
 
     // TODO: Angry face
 
@@ -63,8 +73,8 @@ public class Character : MonoBehaviour {
             targetsAll.Add(character);
         }
 
-        // Instantiate Weapon
-
+        // Initialize Weapon
+        prepareWeapon(weaponStarting);
 
         // TODO: Check for unique name
     }
@@ -96,16 +106,39 @@ public class Character : MonoBehaviour {
         // Move
     }
 
+    void prepareWeapon(Weapon weapon) {
+        if (weaponHeld == null){ // Only with empty hands
+            weaponHeld = Instantiate(weapon) as Weapon;
+            weaponHeld.transform.SetParent (characterHand);
+            weaponHeld.transform.position = characterHand.transform.position;
+            weaponHeld.transform.rotation = characterHand.transform.rotation;
+
+            // Set Range
+            if (weaponHeld.GetComponent<Weapon>().weaponRange > 0) {
+                weaponRange = weaponHeld.GetComponent<Weapon>().weaponRange;
+            } else {
+                weaponRange = 5; // Default fallback
+            }
+
+            // Set Speed
+            if (weaponHeld.GetComponent<Weapon>().weaponSpeed > 0) {
+                weaponSpeed = weaponHeld.GetComponent<Weapon>().weaponSpeed;
+            } else {
+                weaponSpeed = 450; // Default fallback
+            }
+        }
+    }
+
     void InCombat() {
         // Check if target is still within range
         if(IsTargetInRange(combatTarget.transform)) {
+            // Aim
 
+            // Fire
         } else {
             combatTarget = null;
             combatActive = false;
         }
-        // Fire as often as possible
-
         // Move evasively
     }
 

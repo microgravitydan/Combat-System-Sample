@@ -292,6 +292,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1337807010771372253, guid: c5ab2d28a213543ef909567aa8914c57, type: 3}
+      propertyPath: characterName
+      value: Sal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5ab2d28a213543ef909567aa8914c57, type: 3}
 --- !u!1 &1124111656
