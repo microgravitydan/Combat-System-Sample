@@ -7,7 +7,7 @@ Full requirements are listed in Assigment.md
 ## Task List
 * [ ] **10 Characters**
     * [X] **Health**
-    * [ ] **Name**
+    * [X] **Name**
     * [ ] Out of Combat
         * [X] Scan for targets
             * [X] Add targets within range
@@ -23,19 +23,19 @@ Full requirements are listed in Assigment.md
             * [X] Aim
             * [X] Fire
         * [ ] Evasive movement
-    * [X] **Death**
+    * [ ] **Death**
         * [ ] Look dead
     * [ ] Face and Nametags
-* [ ] **Weapons**
+* [X] **Weapons**
     * [X] Instantiate
     * [X] **Attack Speed** (Warmup)
     * [X] **Range**
-    * [ ] **Spawn Bullet**
+    * [X] **Spawn Bullet**
     * [ ] Blast effects
 * [ ] **Bullets**
-    * [ ] Instantiate
+    * [x] Instantiate
     * [ ] **Damage**
-    * [ ] **Speed**
+    * [X] **Speed**
 * [ ] UI
     * [ ] Win screen
         * [ ] Winning character

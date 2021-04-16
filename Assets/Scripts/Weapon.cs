@@ -19,6 +19,11 @@ public class Weapon : MonoBehaviour {
     [Tooltip("Projectile prefab to be spawned with each attack")]
     private Bullet weaponBullet;
 
+    // Muzzle Tranform
+    [SerializeField]
+    [Tooltip("Location on weapon to spawn projectiles")]
+    private Transform weaponMuzzle;
+
     void Start() {
         
     }
@@ -28,7 +33,12 @@ public class Weapon : MonoBehaviour {
     }
 
     public void FireWeapon() {
-        Debug.Log("Weapon Bang!");
+        Bullet projectile = Instantiate(weaponBullet) as Bullet;
+        projectile.transform.SetParent (weaponMuzzle);
+        projectile.transform.position = weaponMuzzle.transform.position;
+        projectile.transform.rotation = weaponMuzzle.transform.rotation;
+        projectile.transform.SetParent (null);
+
     }
 
 }

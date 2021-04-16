@@ -16,15 +16,18 @@ public class Bullet : MonoBehaviour {
 
     // Range
     [SerializeField]
-    [Tooltip("Range in meters")]
-    private int attackRange = 100; // Meters range for projectile despawn. Prevents projectile from travelling forever if it fails to impact anything
+    [Tooltip("Range in seconds")]
+    private float attackRange = 2; // Seconds range for projectile despawn. Prevents projectile from travelling forever if it fails to impact anything
 
-
-    void Start() {
-        
-    }
+    private float attackRangeCurrent; // Current timer before despawn
 
     void Update() {
-        
+        // Move forward
+        transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
+
+        if (attackRangeCurrent >= attackRange) {
+            Destroy(this);
+        }
+        attackRangeCurrent += Time.deltaTime;
     }
 }
