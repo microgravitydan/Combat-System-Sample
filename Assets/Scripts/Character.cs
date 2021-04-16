@@ -183,7 +183,12 @@ public class Character : MonoBehaviour {
         Vector3 diff = target.transform.position - position;
         float targetDistance = diff.sqrMagnitude; // Squared for efficiency
         if (targetDistance < weaponRange * weaponRange) {
-            return true;
+            // Check if dead
+            if (target.GetComponent<Character>().dead == false) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

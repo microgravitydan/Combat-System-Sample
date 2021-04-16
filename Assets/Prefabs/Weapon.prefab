@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSpeed: 0.5
-  weaponRange: 7
+  weaponRange: 50
   weaponBullet: {fileID: 5912980596678776804, guid: ef6edde0bf8f340028a5b4cfdb29b229, type: 3}
   weaponMuzzle: {fileID: 3342889825190304208}
 --- !u!1 &8421122564789925431
