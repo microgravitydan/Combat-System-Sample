@@ -28,7 +28,7 @@ public class Character : MonoBehaviour {
 
     //// Behavior
     // Combat Status
-    private bool combatStatus = false; // Behavior Mode
+    private bool combatActive = false; // Behavior Mode
         // False: Out of combat. No target is available, move and search for a target.
         // True: In combat. Attack target with weapon as often as possible.
 
@@ -75,7 +75,7 @@ public class Character : MonoBehaviour {
             dead = true;
             // TODO: Look dead
         } else {
-            if (combatStatus) {
+            if (combatActive) {
                 InCombat();
             } else {
                 OutOfCombat();
@@ -88,6 +88,7 @@ public class Character : MonoBehaviour {
         UpdateTargetsInRange();
         if (targetsInRange.Count > 0) {
             ChooseTarget();
+            combatActive = true;
         }
         // Target must be in range and not dead
         // Randomly choose random target in range
@@ -98,7 +99,11 @@ public class Character : MonoBehaviour {
     void InCombat() {
         // Check if target is still within range
         if(IsTargetInRange(combatTarget.transform)) {
-        };
+
+        } else {
+            combatTarget = null;
+            combatActive = false;
+        }
         // Fire as often as possible
 
         // Move evasively
@@ -111,7 +116,7 @@ public class Character : MonoBehaviour {
         foreach (GameObject target in targetsAll) { // Check every character target
             Vector3 diff = target.transform.position - position;
             float targetDistance = diff.sqrMagnitude; // Squared for efficiency
-            
+
             // Check if within range
             if (targetDistance < weaponRange * weaponRange) { // Squared for efficiency
                 
@@ -132,7 +137,14 @@ public class Character : MonoBehaviour {
     }
 
     bool IsTargetInRange (Transform target) {
-        return false;
+        Vector3 position = transform.position; // Set position for distance caclulation
+        Vector3 diff = target.transform.position - position;
+        float targetDistance = diff.sqrMagnitude; // Squared for efficiency
+        if (targetDistance < weaponRange * weaponRange) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     void ReceiveDamage(int damage) {

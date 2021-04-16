@@ -9,14 +9,16 @@ Full requirements are listed in Assigment.md
     * [X] **Health**
     * [ ] Name
     * [ ] Out of Combat
-        * [ ] Scan for targets
+        * [X] Scan for targets
             * [X] Add targets within range
-            * [ ] Remove dead targets
+            * [X] Remove dead targets
             * [X] Remove self
         * [X] **Choose one valid target randomly**
+            * [X] Enter combat
         * [ ] Random movement
     * [ ] In Combat
-        * [ ] Check if target still valid
+        * [X] Check if target still valid
+            * [X] Exit combat
         * [ ] Attack with weapon
         * [ ] Evasive movement
     * [X] **Dead**
