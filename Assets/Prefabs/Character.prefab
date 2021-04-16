@@ -202,6 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1337807010771372250}
   - component: {fileID: 1337807010771372253}
+  - component: {fileID: 184070859}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -241,3 +242,26 @@ MonoBehaviour:
   healthPointsMax: 100
   healthPoints: 100
   dead: 0
+  weaponHeld: {fileID: 7701485545163892589, guid: a74dd0ab67eba48edad7befaf249cda6, type: 3}
+--- !u!195 &184070859
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337807010771372251}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

@@ -25,6 +25,11 @@ public class Character : MonoBehaviour {
     [Tooltip("The character is dead")]
     public bool dead = false;
 
+    // Weapon
+    [SerializeField]
+    [Tooltip("Weapon prefab held by character")]
+    private Weapon weaponHeld;
+
     // Behavior Mode
     private bool combatStatus = false; // Behavior Mode
         // False: Out of combat. No target is available, move and search for a target.
@@ -76,7 +81,7 @@ public class Character : MonoBehaviour {
         // Fire as often as possible
     }
 
-    void ReceiveDamage() {
-
+    void ReceiveDamage(int damage) {
+        healthPoints =- damage;
     }
 }
