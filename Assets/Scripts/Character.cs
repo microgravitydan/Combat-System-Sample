@@ -133,7 +133,7 @@ public class Character : MonoBehaviour {
         // Check if target is still within range
         if(IsTargetInRange(combatTarget.transform)) {
             // Aim
-
+            this.transform.LookAt(combatTarget.transform);
             // Fire
         } else {
             combatTarget = null;

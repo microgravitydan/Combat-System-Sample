@@ -20,7 +20,7 @@ Full requirements are listed in Assigment.md
         * [X] Check if target still valid
             * [X] Exit combat
         * [ ] **Attack with weapon**
-            * [ ] Aim
+            * [X] Aim
             * [ ] Fire
         * [ ] Evasive movement
     * [X] **Death**
