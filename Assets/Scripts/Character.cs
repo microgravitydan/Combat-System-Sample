@@ -189,7 +189,8 @@ public class Character : MonoBehaviour {
         }
     }
 
-    void ReceiveDamage(int damage) {
-        healthPoints =- damage;
+    public void ReceiveDamage(int damage) {
+        Debug.Log("Hit by bullet!");
+        healthPoints -= damage;
     }
 }

@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour {
     // Initial speed
     [SerializeField]
     [Tooltip("Speed of the Projectile at time of spawn in undetermined units")]
-    private int projectileSpeed = 50; // Initial speed of projectile when it is spawned
+    private int projectileSpeed = 10; // Initial speed of projectile when it is spawned
 
     // Damage
     [SerializeField]
@@ -26,8 +26,17 @@ public class Bullet : MonoBehaviour {
         transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
 
         if (attackRangeCurrent >= attackRange) {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         attackRangeCurrent += Time.deltaTime;
+    }
+
+    void OnTriggerEnter(Collider collidedObject) {
+        if (collidedObject.gameObject.CompareTag("Character")) {
+            Debug.Log("Hit Character!");
+            collidedObject.GetComponent<Character>().ReceiveDamage(projectileDamage);
+        }
+        
+        Destroy(this.gameObject);
     }
 }

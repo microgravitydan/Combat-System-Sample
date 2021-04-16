@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1721862902980163455}
   - component: {fileID: 5912980596678776804}
+  - component: {fileID: 2028385345096886535}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -47,6 +48,19 @@ MonoBehaviour:
   projectileSpeed: 10
   projectileDamage: 30
   attackRange: 2
+--- !u!135 &2028385345096886535
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770419701409637577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.04
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6175314390666087366
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +152,7 @@ SphereCollider:
   m_GameObject: {fileID: 6175314390666087366}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

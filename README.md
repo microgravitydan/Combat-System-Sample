@@ -19,11 +19,12 @@ Full requirements are listed in Assigment.md
     * [ ] In Combat
         * [X] Check if target still valid
             * [X] Exit combat
+            * [ ] Check if dead
         * [ ] **Attack with weapon**
             * [X] Aim
             * [X] Fire
         * [ ] Evasive movement
-    * [ ] **Death**
+    * [X] **Death**
         * [ ] Look dead
     * [ ] Face and Nametags
 * [X] **Weapons**
@@ -34,7 +35,7 @@ Full requirements are listed in Assigment.md
     * [ ] Blast effects
 * [ ] **Bullets**
     * [x] Instantiate
-    * [ ] **Damage**
+    * [X] **Damage**
     * [X] **Speed**
 * [ ] UI
     * [ ] Win screen
