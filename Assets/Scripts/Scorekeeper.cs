@@ -12,6 +12,7 @@ public class Scorekeeper : MonoBehaviour {
     private bool gameWon;
 
     private List<string> finalScores = new List<string>();
+    private string scoreBoard;
 
     void Start() {
         // Empty UI
@@ -34,7 +35,8 @@ public class Scorekeeper : MonoBehaviour {
             DetermineWinner();
 
             // Display Final Scores
-            this.gameObject.GetComponent<TextMeshProUGUI>().text = "The winner is " + winnerName + " in " + gameTimer.ToString("#.00") + " seconds!";
+            Debug.Log(scoreBoard);
+            this.gameObject.GetComponent<TextMeshProUGUI>().text = scoreBoard;
         }
         gameTimer += Time.deltaTime;
     }
@@ -42,6 +44,7 @@ public class Scorekeeper : MonoBehaviour {
     public void RecordDeath(string name) {
         string scoreEntry = name + " - " + gameTimer.ToString("#.00") + " seconds\n";
         Debug.Log(scoreEntry);
+        scoreBoard = scoreEntry + scoreBoard;
         characterDeaths += 1;
         finalScores.Add(scoreEntry);
     }
@@ -52,7 +55,7 @@ public class Scorekeeper : MonoBehaviour {
                 winnerName = character.GetComponent<Character>().characterName;
             }
         }
-
+        scoreBoard = "The winner is " + winnerName + " in " + gameTimer.ToString("#.00") + " seconds!\n" + scoreBoard;
         Debug.Log("The winner is " + winnerName + " in " + gameTimer.ToString("#.00") + " seconds!");
     }
 }
