@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class Character : MonoBehaviour {
+    UnityEvent m_Status;
+    private GameObject scoreKeeper;
+
     //// Character Stats
 
     // Name
@@ -25,11 +29,9 @@ public class Character : MonoBehaviour {
     [Tooltip("Transform hand for holding things")]
     private Transform characterHand;
 
-    [SerializeField]
     [Tooltip("Text Mesh for top half of face emotes")]
     private TextMeshPro characterEyes;
 
-    [SerializeField]
     [Tooltip("Text Mesh for bottom half of face nametag")]
     private TextMeshPro characterNameTag;
 
@@ -82,6 +84,14 @@ public class Character : MonoBehaviour {
         characterNameTag = this.transform.Find("Face/Tag").GetComponent<TextMeshPro>();
         characterEyes = this.transform.Find("Face/Eyes").GetComponent<TextMeshPro>();
         characterNameTag.text = characterName;
+
+        // Start winner listener
+        if (m_Status == null)
+            m_Status = new UnityEvent();
+        
+        m_Status.AddListener(AnnounceWin);
+        scoreKeeper = GameObject.FindWithTag("Score");
+
     }
 
     void Update() {
@@ -90,9 +100,13 @@ public class Character : MonoBehaviour {
             // Stay dead
         } else if (healthPoints <= 0) {
             dead = true;
-            Debug.Log(characterName + " has died");
             GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
             characterEyes.text = "x x";
+            if (scoreKeeper != null) {
+                scoreKeeper.GetComponent<Scorekeeper>().RecordDeath(characterName);
+            } else {
+                Debug.Log(characterName + " could not find scorekeeper on death.");
+            }
         } else {
             if (combatActive) {
                 InCombat();
@@ -108,7 +122,7 @@ public class Character : MonoBehaviour {
         if (targetsInRange.Count > 0) {
             ChooseTarget();
             combatActive = true;
-            characterEyes.text = "° °";
+            characterEyes.text = ". .";
         }
     }
 
@@ -202,5 +216,9 @@ public class Character : MonoBehaviour {
 
     public void ReceiveDamage(int damage) {
         healthPoints -= damage;
+    }
+
+    void AnnounceWin () {
+
     }
 }

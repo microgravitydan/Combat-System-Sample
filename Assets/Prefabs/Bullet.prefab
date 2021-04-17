@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 10
   projectileDamage: 30
-  attackRange: 2
+  attackRange: 4
 --- !u!135 &2028385345096886535
 SphereCollider:
   m_ObjectHideFlags: 0
