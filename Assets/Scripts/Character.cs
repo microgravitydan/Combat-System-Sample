@@ -1,4 +1,5 @@
 // Character.cs
+// Created by Dan Manley (dcmanley@protonmail.com)
 // This script manages characters including stats, expressions, weapons, out of combat behaviors(scanning for targets, choosing targets) in combat behaviors(determining valid target, firing at targets) receiving damage, death, and calling the scoreboard at death.
 // Must be attached to GameObject with: tag = "Character", Collider with "Is Trigger" = true, Rigidbody, NavMeshAgent, hand transform, eyes TextMeshPro, NameTag TextMeshPro
 // Must set: characterHand, characterEyes, characterNameTag

@@ -58,3 +58,6 @@ A: The Character's prepareWeapon script almost has that capability already as it
         * [X] Winning character
     * [X] Combat Status
         * [X] List Name, Health, Combat Status, and Target of each Character.
+
+## Credits
+Created by Dan Manley (dcmanley@protonmail.com)

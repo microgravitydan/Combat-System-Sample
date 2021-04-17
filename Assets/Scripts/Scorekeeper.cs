@@ -1,4 +1,5 @@
 // Scorekeeper.cs
+// Created by Dan Manley (dcmanley@protonmail.com)
 // This script runs a timer and logs incoming calls to record character deaths. When the win condition of 9 deaths is triggered, it searches for the final living character and displays a scoreboard with the winner at the top.
 // Must be attached to Finalscore TextMeshProUGUI GameObject with: Canvas parent, "Score" tag, enabled.
 // No variables must be set
