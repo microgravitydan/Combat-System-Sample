@@ -38,8 +38,8 @@ Full requirements are listed in Assigment.md
     * [X] **Damage**
     * [X] **Speed**
 * [ ] UI
-    * [ ] Win screen
-        * [ ] Winning character
+    * [X] Win screen
+        * [X] Winning character
     * [ ] Combat Status
         * [ ] List Name, Health, Combat Status, and Target of each Character.
 

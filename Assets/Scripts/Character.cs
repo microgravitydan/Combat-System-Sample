@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Events;
 
 public class Character : MonoBehaviour {
-    UnityEvent m_Status;
+    // Score Keeper
     private GameObject scoreKeeper;
 
     //// Character Stats
@@ -13,7 +12,7 @@ public class Character : MonoBehaviour {
     // Name
     [SerializeField]
     [Tooltip("Name of Character")]
-    private string characterName; // Character Name
+    public string characterName; // Character Name
 
     // Health
     [SerializeField]
@@ -85,11 +84,7 @@ public class Character : MonoBehaviour {
         characterEyes = this.transform.Find("Face/Eyes").GetComponent<TextMeshPro>();
         characterNameTag.text = characterName;
 
-        // Start winner listener
-        if (m_Status == null)
-            m_Status = new UnityEvent();
-        
-        m_Status.AddListener(AnnounceWin);
+        // Find Score Keeper
         scoreKeeper = GameObject.FindWithTag("Score");
 
     }
@@ -105,7 +100,7 @@ public class Character : MonoBehaviour {
             if (scoreKeeper != null) {
                 scoreKeeper.GetComponent<Scorekeeper>().RecordDeath(characterName);
             } else {
-                Debug.Log(characterName + " could not find scorekeeper on death.");
+                Debug.LogError(characterName + " could not find scorekeeper on death.");
             }
         } else {
             if (combatActive) {

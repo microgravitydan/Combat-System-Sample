@@ -2,28 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Events;
 
 public class Scorekeeper : MonoBehaviour {
-    UnityEvent m_Score;
 
     private int characterDeaths;
     private float gameTimer;
     private string deathName;
     private string winnerName;
+    private bool gameWon;
 
     private List<string> finalScores = new List<string>();
 
     void Start() {
-        // Start Score Listener
-        if (m_Score == null)
-            m_Score = new UnityEvent();
-        
-        m_Score.AddListener(delegate{RecordDeath(deathName);});
-        m_Score.AddListener(delegate{AnnounceWinner(winnerName);});
-        
-        // Hide UI
-        //this.gameObject.SetActive(false);
+        // Empty UI
         this.gameObject.GetComponent<TextMeshProUGUI>().text = "";
 
         // Start timer
@@ -32,16 +23,18 @@ public class Scorekeeper : MonoBehaviour {
 
     void Update() {
         // Check for win condition
-        if (characterDeaths >= 9) {
-            // Pause
-            Time.timeScale = 0;
+        if (gameWon == false && characterDeaths >= 9) {
+            // Stop checking for win
+            gameWon = true;
+
+            // Slow time for effect
+            Time.timeScale = 0.1f;
 
             // Get character that is not dead
-            // TODO: This
+            DetermineWinner();
 
             // Display Final Scores
-            this.gameObject.GetComponent<TextMeshProUGUI>().text = "Conclusion!";
-            this.gameObject.SetActive(true);
+            this.gameObject.GetComponent<TextMeshProUGUI>().text = "The winner is " + winnerName + " in " + gameTimer.ToString("#.00") + " seconds!";
         }
         gameTimer += Time.deltaTime;
     }
@@ -53,7 +46,13 @@ public class Scorekeeper : MonoBehaviour {
         finalScores.Add(scoreEntry);
     }
 
-    public void AnnounceWinner(string name) {
-        winnerName = name;
+    public void DetermineWinner() {
+        foreach(GameObject character in GameObject.FindGameObjectsWithTag("Character")) {
+            if (character.GetComponent<Character>().dead == false) {
+                winnerName = character.GetComponent<Character>().characterName;
+            }
+        }
+
+        Debug.Log("The winner is " + winnerName + " in " + gameTimer.ToString("#.00") + " seconds!");
     }
 }
