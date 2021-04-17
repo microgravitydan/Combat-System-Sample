@@ -40,8 +40,8 @@ Full requirements are listed in Assigment.md
 * [ ] UI
     * [X] Win screen
         * [X] Winning character
-    * [ ] Combat Status
-        * [ ] List Name, Health, Combat Status, and Target of each Character.
+    * [X] Combat Status
+        * [X] List Name, Health, Combat Status, and Target of each Character.
 
 ## Technologies Used
 * Development Environment

@@ -37,11 +37,17 @@ public class Weapon : MonoBehaviour {
 
     // Fire Weapon is called from the character that is holding it once it has determined it is ready to fire.
     public void FireWeapon() {
-        // Instantiate bullet at muzzle, then release from parent.
-        Bullet projectile = Instantiate(weaponBullet) as Bullet;
-        projectile.transform.SetParent (weaponMuzzle);
-        projectile.transform.position = weaponMuzzle.transform.position;
-        projectile.transform.rotation = weaponMuzzle.transform.rotation;
-        projectile.transform.SetParent (null);
+        if (weaponBullet == null) {
+            Debug.LogError("Weapon does not have bullet assigned.");
+        } else if (weaponMuzzle == null) {
+            Debug.LogError("Weapon does not have muzzle assigned.");
+        } else {
+            // Instantiate bullet at muzzle, then release from parent.
+            Bullet projectile = Instantiate(weaponBullet) as Bullet;
+            projectile.transform.SetParent (weaponMuzzle);
+            projectile.transform.position = weaponMuzzle.transform.position;
+            projectile.transform.rotation = weaponMuzzle.transform.rotation;
+            projectile.transform.SetParent (null);
+        }
     }
 }
