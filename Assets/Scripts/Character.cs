@@ -1,6 +1,6 @@
 // Character.cs
-// Created by Dan Manley (dcmanley@protonmail.com)
-// This script manages characters including stats, expressions, weapons, out of combat behaviors(scanning for targets, choosing targets) in combat behaviors(determining valid target, firing at targets) receiving damage, death, and calling the scoreboard at death.
+// © 2021 Dan Manley (dcmanley@protonmail.com) All Rights Reserved.
+// This script manages characters including stats, expressions, weapons, out of combat behaviors(scanning for targets, choosing targets) in combat behaviors (determining valid target, firing at targets) receiving damage, death, and calling the scoreboard at death.
 // Must be attached to GameObject with: tag = "Character", Collider with "Is Trigger" = true, Rigidbody, NavMeshAgent, hand transform, eyes TextMeshPro, NameTag TextMeshPro
 // Must set: characterHand, characterEyes, characterNameTag
 // Should set: characterName, weaponStarting
@@ -150,7 +150,7 @@ public class Character : MonoBehaviour {
         // Check for death if health is 0 or lower.
         if (dead) {
             // Stay dead
-        } else if (healthPoints <= 0) { 
+        } else if (healthPoints <= 0) {
             // Die
             dead = true;
 
@@ -247,10 +247,10 @@ public class Character : MonoBehaviour {
 
             // Check if within range
             if (targetDistance < weaponRange * weaponRange) { // Squared for efficiency
-                
+
                 // Check if dead
                 if (target.GetComponent<Character>().dead == false) {
-                    
+
                     // Add to list
                     targetsInRange.Add(target);
                 }

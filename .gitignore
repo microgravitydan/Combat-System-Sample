@@ -57,4 +57,7 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+macOS clutter
 .DS_Store
+._*

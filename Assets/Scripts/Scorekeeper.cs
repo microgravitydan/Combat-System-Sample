@@ -1,5 +1,5 @@
 // Scorekeeper.cs
-// Created by Dan Manley (dcmanley@protonmail.com)
+// © 2021 Dan Manley (dcmanley@protonmail.com) All Rights Reserved.
 // This script runs a timer and logs incoming calls to record character deaths. When the win condition of 9 deaths is triggered, it searches for the final living character and displays a scoreboard with the winner at the top.
 // Must be attached to Finalscore TextMeshProUGUI GameObject with: Canvas parent, "Score" tag, enabled.
 // No variables must be set
@@ -58,7 +58,7 @@ public class Scorekeeper : MonoBehaviour {
                 winnerName = character.GetComponent<Character>().characterName;
             }
         }
-        
+
         Debug.Log("The winner is " + winnerName + " in " + gameTimer.ToString("#.00") + " seconds!");
         // Amend Score Board with winner announcement
         scoreBoard = "The winner is " + winnerName + " in " + gameTimer.ToString("#.00") + " seconds!\n" + scoreBoard;

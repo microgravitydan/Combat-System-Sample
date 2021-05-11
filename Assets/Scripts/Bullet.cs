@@ -1,5 +1,5 @@
 // Bullet.cs
-// Created by Dan Manley (dcmanley@protonmail.com)
+// © 2021 Dan Manley (dcmanley@protonmail.com) All Rights Reserved.
 // This script controls a bullet after it has been instantiated. It moves forward until it contacts a collider, or a timer runs out. If collision is a Character, it calls a damage script with damage to be dealt.
 // Must be attached to a bullet gameobject with: a collider
 // Should set: projectileSpeed, projectileDamage, attackRange

@@ -1,9 +1,9 @@
 // Weapon.cs
-// Created by Dan Manley (dcmanley@protonmail.com)
+// © 2021 Dan Manley (dcmanley@protonmail.com) All Rights Reserved.
 // This script provides weapon specifications that can be called from parent character, and a Fire Weapon script that can be called.
 // Must be attached to a weapon GameObject with: muzzle transform.
 // Must set: weaponBullet, weaponMuzzle
-// Should set: weaponSpeed, weaponRange, 
+// Should set: weaponSpeed, weaponRange,
 
 using System.Collections;
 using System.Collections.Generic;
